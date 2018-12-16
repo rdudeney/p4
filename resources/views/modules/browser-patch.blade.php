@@ -11,10 +11,7 @@
 <script>
     if (datefield.type !== "date"){ //if browser doesn't support input type="date", initialize date picker widget:
         jQuery(function($){ //on document.ready
-            $('#start_date').datepicker({
-                dateFormat: 'yyyy-mm-dd'
-            });
-            $('#end_date').datepicker({
+            $('#searchDate').datepicker({
                 dateFormat: 'yyyy-mm-dd'
             });
         })

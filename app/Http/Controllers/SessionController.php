@@ -9,6 +9,6 @@ class SessionController extends Controller
     public function newSession(Request $request)
     {
         $searchDate = $request->input('searchDate', null);
-        
+        dump($searchDate);
     }
 }
