@@ -18,6 +18,9 @@ Route::view('/sessions/add', 'sessions.add');
 
 Route::get('/sessions/new-session', 'SessionController@newSession');
 
+# SHOW
+Route::get('/sessions', 'SessionController@index');
+
 
 
 Route::get('/debug', function () {

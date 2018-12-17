@@ -18,6 +18,8 @@
         <fieldset>
             <label for='searchDate'>Enter a date:</label>
             <input type='date' name='searchDate' id='searchDate'>
+            <label for='type'>Choose a type:</label>
+            <input type=''
         </fieldset>
 
         <input type='submit' value='Enter' class='btn btn-primary'>
