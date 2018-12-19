@@ -7,7 +7,5 @@
     <ul>
         <li>date: {{ $session->day->date }}</li>
         <li>{{ $session->hours. ' hours' }}</li>
-
-        <a href='/sessions/{{ $session->id }}'>View Session</a>
     </ul>
 </div>

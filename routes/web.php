@@ -17,8 +17,12 @@ Route::get('/', 'WelcomeController');
 Route::get('/sessions/add', 'SessionController@newSession');
 Route::post('/sessions', 'SessionController@store');
 
+# FIND
 
-Route::get('/sessions/new-session', 'SessionController@newSession');
+Route::get('/sessions/find', 'SessionController@find');
+Route::get('/sessions/search-process', 'SessionController@searchProcess');
+
+# Route::get('/sessions/new-session', 'SessionController@newSession');
 
 # SHOW
 Route::get('/sessions/{id}', 'SessionController@show');
@@ -28,8 +32,11 @@ Route::get('/sessions', 'SessionController@index');
 Route::get('/sessions/{id}/edit', 'SessionController@edit');
 Route::put('/sessions/{id}', 'SessionController@update');
 
-#SEARCH
-Route::get('/sessions/search', 'SessionsController@search');
+# DELETE
+Route::get('/sessions/{id}/delete', 'SessionController@delete');
+
+Route::delete('/sessions/{id}', 'SessionController@destroy');
+
 
 
 

@@ -42,8 +42,7 @@ class SessionController extends Controller
      */
     public function newSession(Request $request)
     {
-        #$searchDate = $request->input('searchDate', null);
-        #$days = Days::all();
+
         $descriptions = Description::getForCheckboxes();
 
         return view('sessions.add')->with([
@@ -123,4 +122,50 @@ class SessionController extends Controller
             'alert' => 'Your changes were saved.'
         ]);
     }
+
+    public function find(Request $request)
+    {
+        return view('sessions.find')->with([
+            'searchDate' => $request->session()->get('searchDate', ''),
+            'searchResults' => $request->session()->get('searchResults', []),
+        ]);
+    }
+
+    public function searchProcess(Request $request)
+    {
+        $searchDate = $request->input('searchDate', null);
+        $searchResults = [];
+
+        if ($searchDate)
+        {
+            $searchResults = Session::with('day')->get()->where('day.date', $searchDate);
+        }
+
+        return redirect('/sessions/find')->with([
+            'searchDate' => $searchDate,
+            'searchResults' => $searchResults
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $session = Session::find($id);
+        if (!$session) {
+            return redirect('/sessions')->with('alert', 'Book not found');
+        }
+        return view('sessions.delete')->with([
+            'session' => $session,
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $session = Session::find($id);
+        $session->descriptions()->detach();
+        $session->delete();
+        return redirect('/sessions')->with([
+            'alert' => '“Session on date ' . $session->day->date . '” was removed.'
+        ]);
+    }
+
 }

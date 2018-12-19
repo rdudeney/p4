@@ -4,6 +4,10 @@
     Edit Session
 @endsection
 
+@push('head')
+    @include('modules.browser-patch')
+@endpush
+
 @section('content')
 
     @if(count($errors) > 0)

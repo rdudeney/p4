@@ -21,7 +21,6 @@
         <h2>All sessions</h2>
         @foreach($sessions as $session)
             @include('sessions._session')
-            <a href='/sessions/{{ $session->id }}'>View Session</a>
         @endforeach
     </section>
 @endsection

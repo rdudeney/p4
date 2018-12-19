@@ -6,7 +6,7 @@ return [
         '/' => 'Home',
         '/sessions' => 'Sessions',
         '/sessions/add' => 'Add a Session',
-        'sessions/search' => 'Search',
+        '/sessions/find' => 'Find a Session',
     ],
 
     /*
