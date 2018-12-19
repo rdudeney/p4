@@ -25,6 +25,19 @@ class SessionController extends Controller
     }
 
     /*
+     * Show a particular session
+     */
+
+    public function show(Request $request, $id)
+    {
+        $session = Session::find($id);
+
+        return view('sessions.show')->with([
+            'session' => $session
+        ]);
+    }
+
+    /*
      * GET descriptions information
      */
     public function newSession(Request $request)
@@ -47,8 +60,67 @@ class SessionController extends Controller
             'descriptions' => 'required'
         ]);
 
-        dd($request->descriptions);
+        $day = Day::where('date', '=', $request->date)->first();
 
+        if(!$day)
+        {
+            $day = new Day();
+            $day->date = $request->date;
+            $day->save();
+        }
 
+        $session = new Session();
+        $session->hours = $request->hours;
+        $session->day_id = $day->id;
+        $session->save();
+
+        $session->descriptions()->sync($request->descriptions);
+
+        return redirect('/sessions')->with([
+            'alert' => 'Your session has been added.'
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $session = Session::find($id);
+
+        $descriptions = Description::getForCheckboxes();
+
+        $descriptionsForThisSession = $session->descriptions()->pluck('descriptions.id')->toArray();
+
+        if (!$session) {
+            return redirect('/sessions')->with([
+                'alert' => 'Session not found.'
+            ]);
+        }
+
+        return view('sessions.edit')->with([
+            'session' => $session,
+            'descriptions' => $descriptions,
+            'descriptionsForThisSession' => $descriptionsForThisSession,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'hours' => 'required',
+            'date' => 'required',
+            'descriptions' => 'required'
+        ]);
+
+        $session = Session::find($id);
+        $day = Day::where('date', '=', $request->date)->first();
+
+        $session->descriptions()->sync($request->descriptions);
+
+        $session->hours = $request->hours;
+        $session->day_id = $day->id;
+        $session->save();
+
+        return redirect('/sessions/' . $id . '/edit')->with([
+            'alert' => 'Your changes were saved.'
+        ]);
     }
 }

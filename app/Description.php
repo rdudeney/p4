@@ -13,7 +13,7 @@ class Description extends Model
 
     public static function getForCheckboxes()
     {
-        $descriptions = self::orderBy('type')->get();
+        $descriptions = self::orderBy('type', 'desc')->get();
         $descriptionsForCheckboxes = [];
 
         foreach ($descriptions as $description)

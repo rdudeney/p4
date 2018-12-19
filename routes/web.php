@@ -21,7 +21,16 @@ Route::post('/sessions', 'SessionController@store');
 Route::get('/sessions/new-session', 'SessionController@newSession');
 
 # SHOW
+Route::get('/sessions/{id}', 'SessionController@show');
 Route::get('/sessions', 'SessionController@index');
+
+# EDIT
+Route::get('/sessions/{id}/edit', 'SessionController@edit');
+Route::put('/sessions/{id}', 'SessionController@update');
+
+#SEARCH
+Route::get('/sessions/search', 'SessionsController@search');
+
 
 
 
