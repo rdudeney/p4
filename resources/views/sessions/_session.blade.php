@@ -6,6 +6,6 @@
     </h3>
     <ul>
         <li>date: {{ $session->day->date }}</li>
-        <li>Hours {{ $session->hours. ' hours' }}</li>
+        <li>{{ $session->hours. ' hours' }}</li>
     </ul>
 </div>

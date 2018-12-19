@@ -3,6 +3,8 @@
 return [
 
     'nav' => [
+        '/' => 'Home',
+        '/sessions' => 'Sessions',
         '/sessions/add' => 'Add a Session',
     ],
 

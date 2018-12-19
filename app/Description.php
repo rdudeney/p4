@@ -10,4 +10,16 @@ class Description extends Model
     {
         return $this->belongsToMany('App\Session')->withTimestamps();
     }
+
+    public static function getForCheckboxes()
+    {
+        $descriptions = self::orderBy('type')->get();
+        $descriptionsForCheckboxes = [];
+
+        foreach ($descriptions as $description)
+        {
+            $descriptionsForCheckboxes[$description['id']] = $description->type;
+        }
+        return $descriptionsForCheckboxes;
+    }
 }

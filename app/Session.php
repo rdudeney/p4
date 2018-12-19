@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    public function days()
+    public function day()
     {
         # Session belongs to Day
         # Define an inverse one-to-many relationship.

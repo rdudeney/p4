@@ -11,8 +11,8 @@
     <section id='newSessions'>
         <h2>Recently added sessions</h2>
         <ul>
-            @foreach($newSessions as $session)
-                <li>{{ $session->day->date }}</li>
+            @foreach($newSessions as $newSession)
+                <li>{{ $newSession->day->date }}</li>
             @endforeach
         </ul>
     </section>

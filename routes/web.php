@@ -13,8 +13,10 @@
 
 Route::get('/', 'WelcomeController');
 
-# Go to view to enter a date
-Route::view('/sessions/add', 'sessions.add');
+# CREATE
+Route::get('/sessions/add', 'SessionController@newSession');
+Route::post('/sessions', 'SessionController@store');
+
 
 Route::get('/sessions/new-session', 'SessionController@newSession');
 

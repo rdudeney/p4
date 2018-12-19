@@ -12,7 +12,7 @@ class DescriptionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $descriptions = ['Relaxation', 'Physical', 'Mindfulness', 'Social', 'Giving-back'];
+        $descriptions = ['Giving-Back', 'Mindfulness', 'Physical', 'Relaxation', 'Social',];
 
         foreach ($descriptions as $descriptionType)
         {
