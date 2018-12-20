@@ -105,7 +105,7 @@ class SessionController extends Controller
     {
         $this->validate($request, [
             'hours' => 'required',
-            'date' => 'required',
+            'date' => 'required|date',
             'descriptions' => 'required'
         ]);
 
@@ -164,7 +164,7 @@ class SessionController extends Controller
         $session->descriptions()->detach();
         $session->delete();
         return redirect('/sessions')->with([
-            'alert' => '“Session on date ' . $session->day->date . '” was removed.'
+            'alert' => 'Session on date ' . $session->day->convertDate() . ' was removed.'
         ]);
     }
 

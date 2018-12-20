@@ -19,7 +19,7 @@
     </form>
 
     @if($searchDate)
-        <h2>Results for query: <em>{{ $searchDate }}</em></h2>
+        <h2>Results for query: <em>{{ date_format(date_create($searchDate), 'm/d/Y') }}</em></h2>
 
         @if(count($searchResults) == 0)
             No matches found.

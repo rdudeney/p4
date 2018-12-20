@@ -31,7 +31,7 @@
         @include('modules.field-error', ['field' => 'date'])
 
         <label for='hours'>* Hours</label>
-        <input type='number' name='hours' id='hours' value='{{ old('hours', $session->hours) }}'>
+        <input type='number'  name='hours' id='hours' min='0' max='10' step='0.25' value='{{ old('hours', $session->hours) }}'>
         @include('modules.field-error', ['field' => 'hours'])
 
         <label>Descriptions</label>

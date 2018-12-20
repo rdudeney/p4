@@ -17,7 +17,7 @@ class CreateSessionsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('hours');
+            $table->float('hours', 4, 2);
         });
     }
 
